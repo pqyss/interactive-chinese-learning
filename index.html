@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="data:,">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>儿童互动学习网页制作框架</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    background: linear-gradient(160deg, #fff3e0, #ffe8d6);
+    min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px;
+    color: #4a3728;
+  }
+  .wrap { max-width: 860px; width: 100%; }
+  h1 { font-size: 34px; text-align: center; margin-bottom: 6px; }
+  .sub { text-align: center; color: #8a7568; margin-bottom: 30px; font-size: 15px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .card {
+    background: #fff; border-radius: 20px; padding: 24px; text-align: center;
+    box-shadow: 0 6px 24px rgba(190,140,80,.15); text-decoration: none; color: inherit;
+    transition: transform .15s; display: block; border: 3px solid transparent;
+  }
+  .card:hover { transform: translateY(-4px); border-color: #ff8a3d; }
+  .card .icon { font-size: 44px; margin-bottom: 10px; }
+  .card h2 { font-size: 19px; margin-bottom: 8px; }
+  .card p { font-size: 13.5px; color: #8a7568; line-height: 1.6; }
+  .tip {
+    margin-top: 26px; background: #fff; border-radius: 16px; padding: 16px 20px;
+    font-size: 13.5px; color: #6b5a4a; line-height: 1.8;
+  }
+  .tip b { color: #c05a10; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🧒 儿童互动学习网页制作框架</h1>
+  <p class="sub">可视化内容编辑器 + 通用互动学习引擎 + 独立网页导出 · 以小学低年级语文《咕咚》为示例场景</p>
+  <div class="cards">
+    <a class="card" href="editor/editor.html">
+      <div class="icon">🛠️</div>
+      <h2>内容编辑器</h2>
+      <p>填写题目、选项、分支、素材、小游戏与成就；自动保存在本机浏览器，可导出项目配置或完整网页。</p>
+    </a>
+    <a class="card" href="play.html">
+      <div class="icon">🎒</div>
+      <h2>学生学习网页</h2>
+      <p>运行当前项目（编辑器保存的内容）。给学生的正式版本请通过编辑器“导出完整网页”生成。</p>
+    </a>
+    <a class="card" href="docs/使用说明.md">
+      <div class="icon">📖</div>
+      <h2>使用说明</h2>
+      <p>编辑器功能、分支配置、素材管理、导入导出与 API 配置的完整说明。</p>
+    </a>
+  </div>
+  <div class="tip">
+    <b>推荐使用方式：</b>双击本目录下的 <b>启动框架.sh / .command / .bat</b> 启动本地服务并自动打开入口页面，
+    也可以手动运行 <b>python3 -m http.server 8000</b> 后访问 http://localhost:8000。
+    直接双击 HTML 文件通常也能运行；若导出功能异常，请改用启动脚本。
+    首次使用可在编辑器中“检查与导出 → 载入示例项目”查看《咕咚》演示配置。
+  </div>
+</div>
+</body>
+</html>
