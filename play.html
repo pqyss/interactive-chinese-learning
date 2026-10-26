@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="data:,">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>互动学习</title>
+<link rel="stylesheet" href="engine/player.css">
+</head>
+<body>
+<div class="app">
+  <aside id="sidebar">
+    <div class="brand" id="sidebar-brand">互动学习</div>
+    <div class="sub" id="sidebar-sub"></div>
+    <div class="xp-box">
+      <div class="xp-row">
+        <span class="xp-level" id="xp-level">Lv.1</span>
+        <span class="xp-title" id="xp-title">学习新星</span>
+        <span class="xp-num" id="xp-num">0 经验</span>
+      </div>
+      <div class="bar"><div class="bar-fill" id="xp-bar-fill" style="width:0%"></div></div>
+    </div>
+    <div class="progress-box">
+      <div class="label"><span>学习进度</span><span id="progress-text">0 / 0 题</span></div>
+      <div class="bar"><div class="bar-fill" id="progress-bar-fill" style="width:0%"></div></div>
+    </div>
+    <div id="ach-wall"></div>
+    <div class="side-nav">
+      <button type="button" id="nav-home">🏠 返回首页</button>
+      <button type="button" id="nav-report">📋 学习报告</button>
+      <button type="button" id="nav-reset">🔄 重新开始</button>
+    </div>
+  </aside>
+  <main id="main">
+    <header id="topbar" style="display:none">
+      <button type="button" id="topbar-back">◀ 返回</button>
+      <span id="topbar-title"></span>
+    </header>
+    <section id="text-panel">
+      <div id="text-panel-head">
+        <h3 id="text-title">课文原文</h3>
+        <div style="display:flex;align-items:center;gap:8px">
+          <button type="button" id="text-more-btn">📚 词语与拓展</button>
+          <span class="toggle">点击折叠 / 展开</span>
+        </div>
+      </div>
+      <div id="text-body"></div>
+    </section>
+    <section id="stage"></section>
+  </main>
+</div>
+<div id="toast"></div>
+<div id="modal-root"></div>
+
+<script src="shared/schema.js"></script>
+<script src="shared/db.js"></script>
+<script src="engine/js/store.js"></script>
+<script src="engine/js/api.js"></script>
+<script src="engine/js/achievements.js"></script>
+<script src="engine/js/renderers.js"></script>
+<script src="engine/js/games.js"></script>
+<script src="engine/js/engine.js"></script>
+<script src="engine/js/report.js"></script>
+<script>
+  // 预览模式（编辑器内预览）：从 IndexedDB 读取当前编辑的项目
+  if (location.search.indexOf('preview=1') >= 0) { window.__PLAY_MODE__ = 'idb'; }
+</script>
+<script>
+  document.getElementById('nav-home').onclick = function () { Player.goHome(); };
+  document.getElementById('nav-report').onclick = function () { Player.showReport(); };
+  document.getElementById('nav-reset').onclick = function () {
+    Player.confirmDialog('确定要清空当前学生的学习记录吗？经验值、成就和答题记录都会清空，且不能恢复。', function () {
+      Store.clearRecords();
+      Player.toast('已重新开始，加油！');
+      Player.goHome();
+    });
+  };
+  document.getElementById('text-panel-head').addEventListener('click', function (e) {
+    if (e.target.tagName === 'BUTTON') return;
+    document.getElementById('text-panel').classList.toggle('collapsed');
+  });
+</script>
+<!-- 导出版本会附带 data/project.js（包含全部教学内容与素材清单） -->
+<script src="data/project.js"></script>
+</body>
+</html>

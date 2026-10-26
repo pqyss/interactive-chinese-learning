@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="data:,">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>内容编辑器 · 儿童互动学习框架</title>
+<link rel="stylesheet" href="editor.css">
+</head>
+<body>
+
+<header id="topbar">
+  <span class="logo">🛠️ 内容编辑器</span>
+  <span class="proj-name" id="proj-name">未命名项目</span>
+  <span id="save-status">就绪</span>
+  <span class="spacer"></span>
+  <button class="tbtn" id="btn-save" type="button">💾 保存项目</button>
+  <button class="tbtn" id="btn-preview" type="button">👀 预览学生页</button>
+  <button class="tbtn" id="btn-import" type="button">📥 导入项目</button>
+  <button class="tbtn" id="btn-export-json" type="button">📄 导出项目配置</button>
+  <button class="tbtn primary" id="btn-export-zip" type="button">📦 导出完整网页</button>
+  <input type="file" id="import-file" accept=".json,application/json" style="display:none">
+</header>
+
+<div id="body">
+  <aside id="tree-panel">
+    <h4>项目结构</h4>
+    <div id="tree"></div>
+  </aside>
+  <main id="main-panel">
+    <nav id="tabs"></nav>
+    <div id="tab-content"></div>
+  </main>
+</div>
+
+<div id="notice"></div>
+
+<script src="../shared/schema.js"></script>
+<script src="../shared/db.js"></script>
+<script src="../shared/zip.js"></script>
+<script src="js/app.js"></script>
+<script src="js/panels-core.js"></script>
+<script src="js/panels-flow.js"></script>
+<script src="js/panels-misc.js"></script>
+<script src="js/embedded-sources.js"></script>
+<script src="js/exporter.js"></script>
+</body>
+</html>
